@@ -12,7 +12,10 @@ public class ClienteService {
         this.repository = repository;
     }
 
-    public List<ClienteEntity> findAll() {
-        return repository.findAll();
+    public ClienteEntity salvar(ClienteRequest request) {
+        ClienteEntity entity = new ClienteEntity();
+        entity.setNome(request.nome());
+        entity.setEmail(request.email());
+        return repository.save(entity);
     }
 }
