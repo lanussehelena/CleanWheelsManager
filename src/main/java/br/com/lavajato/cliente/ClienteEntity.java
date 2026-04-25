@@ -18,5 +18,8 @@ public class ClienteEntity {
     @Column(nullable = false, unique = true)
     private String email;
 
+    @Column(length = 20)
+    private String telefone;
+
     public  ClienteEntity() {}
 }
