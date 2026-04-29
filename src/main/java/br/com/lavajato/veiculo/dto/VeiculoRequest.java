@@ -1,4 +1,4 @@
-package br.com.lavajato.veiculo;
+package br.com.lavajato.veiculo.dto;
 
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
