@@ -1,5 +1,8 @@
-package br.com.lavajato.cliente;
+package br.com.lavajato.cliente.controller;
 
+import br.com.lavajato.cliente.entity.ClienteEntity;
+import br.com.lavajato.cliente.dto.ClienteRequest;
+import br.com.lavajato.cliente.service.ClienteService;
 import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

@@ -1,4 +1,4 @@
-package br.com.lavajato.cliente;
+package br.com.lavajato.cliente.entity;
 
 import jakarta.persistence.*;
 import lombok.Data;
@@ -21,5 +21,5 @@ public class ClienteEntity {
     @Column(length = 20)
     private String telefone;
 
-    public  ClienteEntity() {}
+    public ClienteEntity() {}
 }
