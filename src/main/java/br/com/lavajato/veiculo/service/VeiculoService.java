@@ -1,8 +1,9 @@
-package br.com.lavajato.veiculo;
+package br.com.lavajato.veiculo.service;
 
+import br.com.lavajato.veiculo.entity.VeiculoEntity;
+import br.com.lavajato.veiculo.repository.VeiculoRepository;
+import br.com.lavajato.veiculo.dto.VeiculoRequest;
 import org.springframework.stereotype.Service;
-
-import java.util.List;
 
 @Service
 public class VeiculoService {

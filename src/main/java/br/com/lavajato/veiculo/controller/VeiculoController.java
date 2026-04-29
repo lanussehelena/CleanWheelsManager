@@ -1,5 +1,8 @@
-package br.com.lavajato.veiculo;
+package br.com.lavajato.veiculo.controller;
 
+import br.com.lavajato.veiculo.entity.VeiculoEntity;
+import br.com.lavajato.veiculo.dto.VeiculoRequest;
+import br.com.lavajato.veiculo.service.VeiculoService;
 import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
