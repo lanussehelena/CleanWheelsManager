@@ -1,4 +1,4 @@
-package br.com.lavajato.cliente;
+package br.com.lavajato.cliente.dto;
 
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;

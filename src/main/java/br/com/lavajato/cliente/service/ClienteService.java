@@ -1,8 +1,9 @@
-package br.com.lavajato.cliente;
+package br.com.lavajato.cliente.service;
 
+import br.com.lavajato.cliente.entity.ClienteEntity;
+import br.com.lavajato.cliente.repository.ClienteRepository;
+import br.com.lavajato.cliente.dto.ClienteRequest;
 import org.springframework.stereotype.Service;
-
-import java.util.List;
 
 @Service
 public class ClienteService {
