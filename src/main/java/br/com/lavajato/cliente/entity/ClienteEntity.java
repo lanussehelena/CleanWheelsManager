@@ -1,4 +1,4 @@
-package br.com.lavajato.cliente;
+package br.com.lavajato.cliente.entity;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -30,5 +30,5 @@ public class ClienteEntity {
     @OneToMany(mappedBy = "cliente", cascade = CascadeType.ALL)
     private List<VeiculoEntity> veiculos = new ArrayList<>();
 
-    public  ClienteEntity() {}
+    public ClienteEntity() {}
 }

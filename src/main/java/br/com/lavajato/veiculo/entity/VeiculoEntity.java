@@ -1,6 +1,6 @@
 package br.com.lavajato.veiculo.entity;
 
-import br.com.lavajato.cliente.ClienteEntity;
+import br.com.lavajato.cliente.entity.ClienteEntity;
 import jakarta.persistence.*;
 import lombok.Data;
 
