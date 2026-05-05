@@ -1,7 +1,13 @@
 package br.com.lavajato.cliente.entity;
 
+import java.util.ArrayList;
+import java.util.List;
+import jakarta.persistence.CascadeType;
+import jakarta.persistence.OneToMany;
+import br.com.lavajato.veiculo.entity.VeiculoEntity;
 import jakarta.persistence.*;
 import lombok.Data;
+
 
 @Entity
 @Table
@@ -20,6 +26,9 @@ public class ClienteEntity {
 
     @Column(length = 20)
     private String telefone;
+
+    @OneToMany(mappedBy = "cliente", cascade = CascadeType.ALL)
+    private List<VeiculoEntity> veiculos = new ArrayList<>();
 
     public ClienteEntity() {}
 }

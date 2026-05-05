@@ -1,4 +1,4 @@
-package br.com.lavajato.veiculo;
+package br.com.lavajato.veiculo.entity;
 
 import br.com.lavajato.cliente.entity.ClienteEntity;
 import jakarta.persistence.*;
@@ -29,4 +29,5 @@ public class VeiculoEntity {
     private ClienteEntity cliente;
 
     public VeiculoEntity() {}
+
 }
