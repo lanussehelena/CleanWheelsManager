@@ -1,7 +1,5 @@
 package br.com.lavajato.servico.Controller;
 
-package br.com.lavajato.servico;
-
 import br.com.lavajato.servico.DTO.ServicoRequest;
 import br.com.lavajato.servico.DTO.ServicoResponse;
 import br.com.lavajato.servico.service.ServicoService;

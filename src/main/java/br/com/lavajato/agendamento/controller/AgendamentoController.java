@@ -25,4 +25,5 @@ public class AgendamentoController {
 
         var response = service.atualizarStatus(id, novoStatus);
         return ResponseEntity.ok(response);
+    }
 }

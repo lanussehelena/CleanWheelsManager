@@ -28,26 +28,19 @@ public class AgendamentoService {
         this.servicoRepository = servicoRepository;
     }
 
-    public AgendamentoResponse agendar(AgendamentoRequest request) {
-        if (repository.existsByVeiculoIdAndDataHora(request.veiculoId(), request.dataHora())) {
-            throw new RuntimeException("Horário já ocupado para este veículo.");
+    public AgendamentoResponse atualizarStatus(Long id, StatusAgendamento novoStatus) {
+
+        var agendamento = repository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Agendamento não encontrado."));
+
+        if (agendamento.getStatus() == StatusAgendamento.CONCLUIDO ||
+                agendamento.getStatus() == StatusAgendamento.CANCELADO) {
+            throw new RuntimeException("Não é possível alterar o status de um agendamento finalizado.");
         }
 
-        var veiculo = veiculoRepository.findById(request.veiculoId()).orElseThrow();
-        var servicos = servicoRepository.findAllById(request.servicosIds());
+        agendamento.setStatus(novoStatus);
+        var salvo = repository.save(agendamento);
 
-        BigDecimal total = servicos.stream()
-                .map(s -> s.getPreco())
-                .reduce(BigDecimal.ZERO, BigDecimal::add);
-
-        AgendamentoEntity entity = new AgendamentoEntity();
-        entity.setVeiculo(veiculo);
-        entity.setServicos(servicos);
-        entity.setDataHora(request.dataHora());
-        entity.setValorTotal(total);
-        entity.setStatus(StatusAgendamento.PENDENTE);
-
-        var salvo = repository.save(entity);
         return AgendamentoResponse.fromEntity(salvo);
     }
 
