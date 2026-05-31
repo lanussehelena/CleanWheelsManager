@@ -14,6 +14,9 @@ public class RestExceptionHandler {
                 .toList();
         return ResponseEntity.badRequest().body(erros);
     }
-
+    @ExceptionHandler(BusinessException.class)
+    public ResponseEntity<DefaultError> handleBusiness(BusinessException ex) {
+        return ResponseEntity.badRequest().body(new DefaultError("Regra de Negócio", ex.getMessage()));
+    }
     public record DefaultError(String campo, String mensagem) {}
 }
