@@ -1,12 +1,11 @@
 package br.com.lavajato.cliente.entity;
 
-import java.util.ArrayList;
-import java.util.List;
-import jakarta.persistence.CascadeType;
-import jakarta.persistence.OneToMany;
 import br.com.lavajato.veiculo.entity.VeiculoEntity;
 import jakarta.persistence.*;
 import lombok.Data;
+
+import java.util.ArrayList;
+import java.util.List;
 
 
 @Entity
