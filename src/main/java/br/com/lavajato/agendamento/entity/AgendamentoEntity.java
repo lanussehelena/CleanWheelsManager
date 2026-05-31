@@ -1,10 +1,13 @@
 package br.com.lavajato.agendamento.entity;
 
-import br.com.lavajato.veiculo.VeiculoEntity;
-import br.com.lavajato.servico.ServicoEntity;
+import br.com.lavajato.agendamento.Enum.StatusAgendamento;
+import br.com.lavajato.veiculo.entity.VeiculoEntity;
 import jakarta.persistence.*;
+import br.com.lavajato.servico.Entity.ServicoEntity;
 import lombok.Getter;
 import lombok.Setter;
+
+import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import java.util.List;
 
@@ -12,6 +15,10 @@ import java.util.List;
 @Table(name = "TB_AGENDAMENTO")
 @Getter @Setter
 public class AgendamentoEntity {
+
+    private BigDecimal valorTotal;
+    @Enumerated(EnumType.STRING)
+    private StatusAgendamento status;
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
