@@ -9,9 +9,7 @@ import br.com.lavajato.servico.Entity.ServicoEntity;
 import br.com.lavajato.servico.Repository.ServicoRepository;
 import br.com.lavajato.veiculo.repository.VeiculoRepository;
 import org.springframework.stereotype.Service;
-
 import java.math.BigDecimal;
-import java.util.List;
 
 @Service
 public class AgendamentoService {
@@ -29,7 +27,6 @@ public class AgendamentoService {
     }
 
     public AgendamentoResponse atualizarStatus(Long id, StatusAgendamento novoStatus) {
-
         var agendamento = repository.findById(id)
                 .orElseThrow(() -> new RuntimeException("Agendamento não encontrado."));
 
@@ -41,13 +38,16 @@ public class AgendamentoService {
         agendamento.setStatus(novoStatus);
         var salvo = repository.save(agendamento);
 
+        // Corrigido: Usando a variável 'salvo' que é do tipo Entity
         return AgendamentoResponse.fromEntity(salvo);
     }
 
-    public AgendamentoEntity agendar(AgendamentoRequest request) {
-        var veiculo = veiculoRepository.findById(request.veiculoId()).orElseThrow();
-        var servicos = servicoRepository.findAllById(request.servicosIds());
+    // Corrigido: Agora o retorno é AgendamentoResponse
+    public AgendamentoResponse agendar(AgendamentoRequest request) {
+        var veiculo = veiculoRepository.findById(request.veiculoId())
+                .orElseThrow(() -> new RuntimeException("Veículo não encontrado"));
 
+        var servicos = servicoRepository.findAllById(request.servicosIds());
 
         BigDecimal total = servicos.stream()
                 .map(ServicoEntity::getPreco)
@@ -60,6 +60,9 @@ public class AgendamentoService {
         entity.setValorTotal(total);
         entity.setStatus(StatusAgendamento.PENDENTE);
 
-        return AgendamentoResponse.fromEntity(repository.save(entity));
+        var salvo = repository.save(entity);
+
+
+        return AgendamentoResponse.fromEntity(salvo);
     }
 }

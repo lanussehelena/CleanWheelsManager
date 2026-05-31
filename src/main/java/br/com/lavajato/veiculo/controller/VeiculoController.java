@@ -1,5 +1,6 @@
 package br.com.lavajato.veiculo.controller;
 
+import br.com.lavajato.veiculo.dto.VeiculoResponse;
 import br.com.lavajato.veiculo.entity.VeiculoEntity;
 import br.com.lavajato.veiculo.dto.VeiculoRequest;
 import br.com.lavajato.veiculo.service.VeiculoService;
@@ -21,7 +22,7 @@ public class VeiculoController {
     }
 
     @PostMapping
-    public ResponseEntity<VeiculoEntity> create(@Valid @RequestBody VeiculoRequest request) {
+    public ResponseEntity<VeiculoResponse> create(@Valid @RequestBody VeiculoRequest request) {
         var veiculoSalvo = service.salvar(request);
         return ResponseEntity.status(HttpStatus.CREATED).body(veiculoSalvo);
     }

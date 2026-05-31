@@ -23,9 +23,7 @@ public record AgendamentoResponse(
                 entity.getVeiculo().getCliente().getNome(),
                 entity.getValorTotal(),
                 entity.getStatus().toString(),
-                entity.getServicos().stream()
-                        .map(ServicoEntity::getNome)
-                        .toList()
+                entity.getServicos().stream().map(s -> s.getNome()).toList()
         );
     }
 }

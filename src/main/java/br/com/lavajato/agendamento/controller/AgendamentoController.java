@@ -18,6 +18,13 @@ public class AgendamentoController {
         this.service = service;
     }
 
+    @PostMapping
+    public ResponseEntity<AgendamentoResponse> agendar(@RequestBody @Valid AgendamentoRequest request) {
+        var response = service.agendar(request);
+
+        return ResponseEntity.status(HttpStatus.CREATED).body(response);
+    }
+
     @PatchMapping("/{id}/status")
     public ResponseEntity<AgendamentoResponse> atualizarStatus(
             @PathVariable Long id,
