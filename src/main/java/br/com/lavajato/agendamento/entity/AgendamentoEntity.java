@@ -2,7 +2,6 @@ package br.com.lavajato.agendamento.entity;
 
 import br.com.lavajato.agendamento.Enum.StatusAgendamento;
 import br.com.lavajato.veiculo.entity.VeiculoEntity;
-import br.com.lavajato.veiculo.service.ServicoEntity;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;

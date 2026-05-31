@@ -5,8 +5,9 @@ import br.com.lavajato.agendamento.dto.AgendamentoRequest;
 import br.com.lavajato.agendamento.dto.AgendamentoResponse;
 import br.com.lavajato.agendamento.entity.AgendamentoEntity;
 import br.com.lavajato.agendamento.repository.AgendamentoRepository;
+import br.com.lavajato.servico.Entity.ServicoEntity;
+import br.com.lavajato.servico.Repository.ServicoRepository;
 import br.com.lavajato.veiculo.repository.VeiculoRepository;
-import br.com.lavajato.servico.ServicoRepository;
 import org.springframework.stereotype.Service;
 
 import java.math.BigDecimal;
