@@ -4,6 +4,10 @@ import br.com.lavajato.agendamento.entity.AgendamentoEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
-@Repository
+import java.time.LocalDateTime;
+
+@@Repository
 public interface AgendamentoRepository extends JpaRepository<AgendamentoEntity, Long> {
-}
+
+    // Esta "Magic Method" do Spring verifica a existência sem carregar o objeto inteiro
+    boolean existsByVeiculoIdAndDataHora(Long veiculoId, LocalDateTime dataHora);
