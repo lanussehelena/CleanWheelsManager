@@ -10,6 +10,7 @@ import br.com.lavajato.servico.Repository.ServicoRepository;
 import br.com.lavajato.veiculo.repository.VeiculoRepository;
 import org.springframework.stereotype.Service;
 import java.math.BigDecimal;
+import java.util.List;
 
 @Service
 public class AgendamentoService {
@@ -37,12 +38,9 @@ public class AgendamentoService {
 
         agendamento.setStatus(novoStatus);
         var salvo = repository.save(agendamento);
-
-        // Corrigido: Usando a variável 'salvo' que é do tipo Entity
         return AgendamentoResponse.fromEntity(salvo);
     }
 
-    // Corrigido: Agora o retorno é AgendamentoResponse
     public AgendamentoResponse agendar(AgendamentoRequest request) {
         var veiculo = veiculoRepository.findById(request.veiculoId())
                 .orElseThrow(() -> new RuntimeException("Veículo não encontrado"));
@@ -64,5 +62,26 @@ public class AgendamentoService {
 
 
         return AgendamentoResponse.fromEntity(salvo);
+    }
+
+    public List<AgendamentoResponse> listarTodos() {
+        return repository.findAll().stream()
+                .map(AgendamentoResponse::fromEntity)
+                .toList();
+    }
+
+
+    public AgendamentoResponse buscarPorId(Long id) {
+        var agendamento = repository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Agendamento não encontrado com o ID: " + id));
+        return AgendamentoResponse.fromEntity(agendamento);
+    }
+
+
+    public void deletar(Long id) {
+        if (!repository.existsById(id)) {
+            throw new RuntimeException("Não foi possível excluir: Agendamento não encontrado.");
+        }
+        repository.deleteById(id);
     }
 }

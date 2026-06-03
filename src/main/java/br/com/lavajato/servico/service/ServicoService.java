@@ -31,4 +31,19 @@ public class ServicoService {
                 .map(ServicoResponse::fromEntity)
                 .toList();
     }
+
+    public ServicoResponse atualizarPreco(Long id, ServicoRequest request) {
+        var servico = repository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Serviço não encontrado."));
+
+        if (request.preco() != null) servico.setPreco(request.preco());
+        if (request.nome() != null) servico.setNome(request.nome());
+
+        var salvo = repository.save(servico);
+        return ServicoResponse.fromEntity(salvo);
+    }
+
+    public void deletar(Long id) {
+        repository.deleteById(id);
+    }
 }

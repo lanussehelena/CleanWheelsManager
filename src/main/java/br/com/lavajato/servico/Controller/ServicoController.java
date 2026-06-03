@@ -28,4 +28,15 @@ public class ServicoController {
     public ResponseEntity<List<ServicoResponse>> listar() {
         return ResponseEntity.ok(service.listarTodos());
     }
+
+    @PatchMapping("/{id}")
+    public ResponseEntity<ServicoResponse> atualizar(@PathVariable Long id, @RequestBody ServicoRequest request) {
+        return ResponseEntity.ok(service.atualizarPreco(id, request));
+    }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Void> deletar(@PathVariable Long id) {
+        service.deletar(id);
+        return ResponseEntity.noContent().build();
+    }
 }
